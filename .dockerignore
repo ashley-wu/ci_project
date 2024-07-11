@@ -1,9 +1,9 @@
-**/node_modules/
-**/dist
-Dockerfile
-/coverage
-/cypress
-.git
-.gitignore
-.env
-certificates
+/node_modules/
+# **/dist
+# Dockerfile
+# /coverage
+# /cypress
+# .git
+# .gitignore
+# .env
+# certificates

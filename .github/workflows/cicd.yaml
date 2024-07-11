@@ -21,14 +21,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Publish image to DOCKER Hub
-        run: docker push ashleywpc/ci_project:latest
+        run: docker push ashleywpc/ci_project
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
       - name: Pull image from Docker Hub
-        run: docker pull ashleywpc/ci_project:latest
+        run: docker pull ashleywpc/ci_project
       - name: Delete old container
         run: docker rm -f ci_project_container
       - name: Run Docker container
