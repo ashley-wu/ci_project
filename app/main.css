@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Awesome */
+@import '@/public/fontawesome/css/fontawesome.css';
+@import '@/public/fontawesome/css/brands.css';
+@import '@/public/fontawesome/css/regular.css';
+@import '@/public/fontawesome/css/solid.css';
+
+@layer base {
+  :root {
+    --color-primary: 2 53 145;
+  }
+}
+
+body {
+  @apply bg-offwhite text-gray-600;
+}
+
+#app_container {
+  @apply min-h-screen grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
+
+#app_container > main {
+  grid-area: main;
+}
+
+#app_container > header {
+  @apply sticky top-0 left-0 right-0;
+  @apply bg-offwhite h-[60px];
+  grid-area: header;
+  transition: all 0.4s ease-out;
+}
+
+#app_container footer {
+  @apply sticky bottom-0 left-0 right-0;
+  @apply bg-offwhite text-primary;
+  grid-area: footer;
+}
+
+.main_container {
+  @apply w-[90%] max-w-[1000px] mx-auto;
+  @apply grid pt-4 md:pt-6 pb-4;
+}
+
+#contact_info {
+  @apply grid pt-4 gap-y-2;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+#courses {
+  @apply grid-cols-1 md:grid-cols-2;
+  @apply grid justify-center justify-items-center gap-y-8 md:gap-x-4;
+}
+
+.divider {
+  @apply grid content-center grid-cols-[1fr_auto_1fr];
+  @apply text-primary font-medium;
+}
+
+.divider::before,
+.divider::after {
+  @apply p-[1px] m-3 bg-primary/80;
+  content: '';
+}
+
+.divider::before {
+  @apply ml-0;
+}
+
+.divider::after {
+  @apply mr-0;
+}
+
+#overlay_menu {
+  @apply h-full w-0 fixed z-10 top-0 right-0 bg-primary overflow-hidden;
+  transition: 0.4s;
+}

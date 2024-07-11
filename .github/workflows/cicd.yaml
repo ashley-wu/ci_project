@@ -1,0 +1,32 @@
+name: Deploy Next.js Application
+
+on:
+  push:
+    branches:
+      - deploy-with-docker-ec2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      - name: Create .env file
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env && echo "SITE_URL=${{ secrets.SITE_URL }}" >> .env
+      - name: Build Docker image
+        run: docker build -t ashleywpc/ci_project .
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.PASSWORD }}
+      - name: Publish image to DOCKER Hub
+        run: docker push ashleywpc/ci_project:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull ashleywpc/ci_project:latest
+      - name: Delete old container
+        run: docker rm -f ci_project_container
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 --name ci_project_container ashleywpc/ci_project
