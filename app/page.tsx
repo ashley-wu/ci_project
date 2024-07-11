@@ -11,5 +11,3 @@ export default function Home() {
     </main>
   );
 }
-
-<meta name="google-site-verification" content="6NTQUvsjZD90dyrslW3fzBjMVE1iP-rqWDMUamAQPqc" />
