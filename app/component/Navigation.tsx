@@ -32,6 +32,7 @@ const NavMenu = () => {
           <NavLink title='晉龍號遊艇船隊' path={PATH.index} icon='fa-solid fa-anchor' onClick={onCloseNavMenu} />
           <NavLink title='探索基隆嶼' path={PATH.keelungIslet} icon='fa-solid fa-mountain-sun' onClick={onCloseNavMenu} />
           <NavLink title='海釣行程' path={PATH.offshoreFishing} icon='fa-solid fa-fish-fins' onClick={onCloseNavMenu} />
+          <NavLink title='Books' path={'/books'} icon='fa-solid fa-fish-fins' onClick={onCloseNavMenu} />
         </ul>
         <i
           className='fa-solid fa-xmark text-2xl text-offwhite/90 hover:text-offwhite absolute top-9 left-9'
