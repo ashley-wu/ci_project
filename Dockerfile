@@ -1,6 +1,6 @@
 FROM node:20-alpine as build
 
-ENV NEXT_PUBLIC_API_HOST_URL = ""
+# ENV NEXT_PUBLIC_API_HOST_URL = ""
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN npm install --production
 
 COPY . .
 
-RUN npm run build
+RUN npm install --production=false && npm run build && npm ci
 
 FROM node:20-alpine
 
