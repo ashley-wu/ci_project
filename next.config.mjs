@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  }
   // output: 'standalone',
   // webpack: (config, { isServer }) => {
   //   console.log('from webpack', path, __dirname)
