@@ -6,9 +6,6 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN if [ ! -f "$npm_package_root" ]; then echo "Package.json file not fount at $npm_package_root" exit 1 fi
-RUN if [ ! -f "$npm_package_lock_file" ]; then echo "Package.lock.json file not fount at $npm_package_lock_file" exit 1 fi
-
 RUN npm install --production
 
 COPY . .
