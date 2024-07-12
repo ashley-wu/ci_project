@@ -10,6 +10,8 @@ RUN npm install --production
 
 COPY . .
 
+RUN npx prisma generate
+
 RUN npm install --production=false && npm run build && npm ci
 
 FROM node:20-alpine
