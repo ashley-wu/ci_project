@@ -6,19 +6,26 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm ci
+
+# RUN npm install --production
 
 COPY . .
 
+COPY next.config.mjs .
+COPY tsconfig.json .
+
 RUN npx prisma generate
 
-RUN npm install --production=false && npm run build && npm ci
+RUN npm bun build
 
-FROM node:20-alpine
+# RUN npm install --production=false && npm run build && npm ci
 
-WORKDIR /app
+# FROM node:20-alpine
 
-COPY --from=build /app ./
+# WORKDIR /app
+
+# COPY --from=build /app ./
 
 EXPOSE 3000
 
