@@ -17,7 +17,7 @@ COPY tsconfig.json .
 
 RUN npx prisma generate
 
-RUN npm bun build
+RUN npm run build
 
 # RUN npm install --production=false && npm run build && npm ci
 
